@@ -1,10 +1,11 @@
 class MakeChange
-  def initialize(quarter, dime, nickel, penny, change)
-    @quarter = quarter
-    @dime = dime
-    @nickel = nickel
-    @penny = penny
+  attr_writer(:change)
+  def initialize(change)
     @change = change
+    @quarter = 0
+    @dime = 0
+    @nickel = 0
+    @penny = 0
   end
 
   def find_change
@@ -36,6 +37,6 @@ end
 puts "Please enter a number:"
 change = gets.to_i
 
-makechange = MakeChange.new(0, 0, 0, 0, change)
+makechange = MakeChange.new(change)
 makechange.find_change
 puts makechange.output_change
