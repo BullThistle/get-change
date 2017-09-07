@@ -1,14 +1,14 @@
 class MakeChange
-  def initialize(change)
-    @quarter = 0
-    @dime = 0
-    @nickel = 0
-    @penny = 0
+  def initialize(quarter, dime, nickel, penny, change)
+    @quarter = quarter
+    @dime = dime
+    @nickel = nickel
+    @penny = penny
     @change = change
   end
 
   def find_change
-    until @change = 0 do
+    until @change == 0 do
       if @change > 24 then
         @change -= 25
         @quarter += 1
@@ -26,13 +26,16 @@ class MakeChange
   end
 
   def output_change
-    puts @quarter + "quarter(s)" +
-    @dime + "dime(s)" +
-    @nickle + "nickle(s)" +
-    @penny + "penny"
+    return @quarter.to_s + " quarter " +
+    @dime.to_s + " dime " +
+    @nickel.to_s + " nickle " +
+    @penny.to_s + " penny"
+  end
 end
 
 puts "Please enter a number:"
-change = gets
+change = gets.to_i
 
-makechange = MakeChange.new(change)
+makechange = MakeChange.new(0, 0, 0, 0, change)
+makechange.find_change
+puts makechange.output_change
